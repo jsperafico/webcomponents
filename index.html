@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script src="./components/avatar/avatar.js"></script>
+        <script src="./components/card/card.js"></script>
+        <link rel="stylesheet" href="./components/card/card.css">
+
+        <template id="card">
+            <div class="card">
+                <p>Heading</p>
+                <p>Body</p>
+            </div>
+        </template>
+    </head>
+    <body>
+        <div>
+            <p>Using only js, will find any tag 'custom-avatar' and will append an innerHTML to it.</p>
+            <custom-avatar></custom-avatar>
+        </div>
+        <div>
+            <p>Using HTML template, we are adding cards to this page.</p>
+            <div id="cards"></div>
+        </div>
+    </body>
+</html>
