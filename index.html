@@ -2,12 +2,92 @@
     <head>
         <script src="./components/avatar/avatar.js"></script>
         <script src="./components/card/card.js"></script>
+        <script src="./components/dialog/dialog.js"></script>
         <link rel="stylesheet" href="./components/card/card.css">
 
         <template id="card">
+            <!-- 
+                Here it can contain css and script. Unfortunately every time this template is applied, 
+                it will copy the css and script section as well. 
+            -->
             <div class="card">
                 <p>Heading</p>
                 <p>Body</p>
+            </div>
+        </template>
+        <template id='dialog'>
+            <script>
+                document.getElementById('launch-dialog').addEventListener('click', () => {
+                    const wrapper = document.querySelector('.wrapper');
+                    const closeButton = document.querySelector('button.close');
+                    const wasFocused = document.activeElement;
+                    wrapper.classList.add('open');
+                    closeButton.focus();
+                    closeButton.addEventListener('click', () => {
+                        wrapper.classList.remove('open');
+                        wasFocused.focus();
+                    });
+                });
+            </script>
+            <style>
+                .wrapper {
+                    opacity: 0;
+                    transition: visibility 0s, opacity 0.25s ease-in;
+                }
+                .wrapper:not(.open) {
+                    visibility: hidden;
+                }
+                .wrapper.open {
+                    align-items: center;
+                    display: flex;
+                    justify-content: center;
+                    height: 100vh;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    opacity: 1;
+                    visibility: visible;
+                }
+                .overlay {
+                    background: rgba(0, 0, 0, 0.8);
+                    height: 100%;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                }
+                .dialog {
+                    background: #ffffff;
+                    max-width: 600px;
+                    padding: 1rem;
+                    position: fixed;
+                }
+                .dialog button {
+                    all: unset;
+                    cursor: pointer;
+                    font-size: 1.25rem;
+                    position: absolute;
+                    top: 1rem;
+                    right: 1rem;
+                }
+                .dialog button:focus {
+                    border: 2px solid blue;
+                }
+            </style>
+            <div class="wrapper">
+                <div class="overlay">
+                    <div class="dialog" role="dialog" aria-labelledby="title" aria-describedby="content">
+                        <button class='close' aria-label="Close">X</button>
+                        <h1 id="title">Dialog</h1>
+                        <div id="content">
+                            <p>This should be a dialog.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </template>
     </head>
@@ -19,6 +99,11 @@
         <div>
             <p>Using HTML template, we are adding cards to this page.</p>
             <div id="cards"></div>
+        </div>
+        <div>
+            <one-dialog></one-dialog>
+            <p>It should open an dialog.</p>
+            <button id="launch-dialog">Launch dialog</button>
         </div>
     </body>
 </html>
