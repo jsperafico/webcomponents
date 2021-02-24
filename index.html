@@ -15,20 +15,17 @@
                 <p>Body</p>
             </div>
         </template>
+    </head>
+    <body>
+        <div>
+            <p>Using only js, will find any tag 'custom-avatar' and will append an innerHTML to it.</p>
+            <custom-avatar></custom-avatar>
+        </div>
+        <div>
+            <p>Using HTML template, we are adding cards to this page.</p>
+            <div id="cards"></div>
+        </div>
         <template id='dialog'>
-            <script>
-                document.getElementById('launch-dialog').addEventListener('click', () => {
-                    const wrapper = document.querySelector('.wrapper');
-                    const closeButton = document.querySelector('button.close');
-                    const wasFocused = document.activeElement;
-                    wrapper.classList.add('open');
-                    closeButton.focus();
-                    closeButton.addEventListener('click', () => {
-                        wrapper.classList.remove('open');
-                        wasFocused.focus();
-                    });
-                });
-            </script>
             <style>
                 .wrapper {
                     opacity: 0;
@@ -90,20 +87,16 @@
                 </div>
             </div>
         </template>
-    </head>
-    <body>
-        <div>
-            <p>Using only js, will find any tag 'custom-avatar' and will append an innerHTML to it.</p>
-            <custom-avatar></custom-avatar>
-        </div>
-        <div>
-            <p>Using HTML template, we are adding cards to this page.</p>
-            <div id="cards"></div>
-        </div>
         <div>
             <one-dialog></one-dialog>
             <p>It should open an dialog.</p>
             <button id="launch-dialog">Launch dialog</button>
         </div>
+        <script>
+            const button = document.getElementById('launch-dialog');
+            button.addEventListener('click', () => {
+                document.querySelector('one-dialog').open = true;
+            });
+        </script>
     </body>
 </html>
