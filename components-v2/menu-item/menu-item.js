@@ -52,5 +52,6 @@ class MenuItem extends AbstractClass {
     }
 }
 
-//Migrate to a smart component factory.
-customElements.define('menu-item', MenuItem);
+if (!ComponentFactory.INSTANCE.postpone) {
+    ComponentFactory.INSTANCE.register(MenuItem);
+}
