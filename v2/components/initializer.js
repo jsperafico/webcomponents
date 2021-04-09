@@ -33,7 +33,7 @@ class AbstractClass extends HTMLElement {
         if (window.location.href.includes(this.localName)) {
             value = this.localName;
         } else {
-            value = `./components-v2/${this.localName}/${this.localName}`;
+            value = `./components/${this.localName}/${this.localName}`;
         }
         return value;
     }
