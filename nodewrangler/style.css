@@ -1,0 +1,53 @@
+:root {
+  --element-height: 30vh;
+  --element-width: 15vw;
+  --element-gap: 6px;
+}
+
+div#board {
+  display: grid;
+  gap: var(--element-gap);
+  grid-auto-rows: calc(var(--element-height) + 1vw);
+  grid-auto-columns: calc(var(--element-width) + 1vw);
+}
+
+div.element {
+  width: var(--element-width);
+  height: var(--element-height);
+}
+
+div.element[draggable="true"] {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 1px 1px 1px;
+  cursor: move;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+div.element[draggable="true"] > label {
+  grid-column: span 2;
+}
+
+div.element[draggable="true"] > section[name='input'] {
+  text-align: left;
+}
+
+div.element[draggable="true"] > section[name='output'] {
+  text-align: right;
+}
+
+div.element[draggable="true"] > section > button {
+  padding: 15%;
+  border: none;
+}
+
+div#placeholder {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgba(0.5,0.5,0.5,0.2);
+  display: none;
+}
