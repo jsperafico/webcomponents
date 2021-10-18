@@ -57,3 +57,10 @@ div.draggable > section > button {
   padding: 15%;
   border: none;
 }
+
+svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
