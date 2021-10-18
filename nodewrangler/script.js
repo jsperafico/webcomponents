@@ -11,17 +11,11 @@ let data = {
 function move(item, e) {
   let rect = item.getBoundingClientRect();
   
-  let nearEndWidth = (e.pageX + rect.width) >= document.body.clientWidth;
-  let nearEndHeight = (e.pageY + rect.height) >= document.body.clientHeight;
+  let xOrNearBoundary = e.pageX + ((e.pageX + rect.width) >= document.body.clientWidth ? rect.width / 4 : 0);
+  let yOrNearBoundary = e.pageY + ((e.pageY + rect.height) >= document.body.clientHeight ? rect.height / 4 : 0);
   
-  let x = Math.round(
-    (e.pageX + ((nearEndWidth) ? rect.width : 0 ))/
-    (rect.width + gap)
-  );
-  let y = Math.round(
-    (e.pageY + ((nearEndHeight) ? rect.height: 0 ))/
-    (rect.height + gap)
-  );
+  let x = parseInt(xOrNearBoundary / (rect.width + gap)) + 1;
+  let y = parseInt(yOrNearBoundary / (rect.height + gap)) + 1;
 
   setElementPosition(item, x, y);
 }
