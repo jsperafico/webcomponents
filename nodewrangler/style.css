@@ -7,19 +7,17 @@
 div#board {
   display: grid;
   gap: var(--element-gap);
-  grid-auto-rows: calc(var(--element-height) + 1vw);
-  grid-auto-columns: calc(var(--element-width) + 1vw);
+  grid-auto-rows: var(--element-height);
+  grid-auto-columns: var(--element-width);
 }
 
-div.element {
+div.draggable {
   width: var(--element-width);
   height: var(--element-height);
-}
 
-div.element[draggable="true"] {
+  opacity: 1;
   border: 1px solid;
   border-radius: 5px;
-  padding: 10px;
   box-shadow: 1px 1px 1px;
   cursor: move;
   
@@ -28,26 +26,34 @@ div.element[draggable="true"] {
   gap: 5px;
 }
 
-div.element[draggable="true"] > label {
+div.draggable.dragging {
+  opacity: 0.3;
+  background-color: rgba(0.5,0.5,0.5,0.2);
+}
+
+div.draggable,
+div.draggable > label {
+  cursor: move;
+}
+
+div.draggable > label {
+  padding: 10px;
   grid-column: span 2;
 }
 
-div.element[draggable="true"] > section[name='input'] {
+div.draggable > section[name='input'] {
   text-align: left;
 }
 
-div.element[draggable="true"] > section[name='output'] {
+div.draggable > section[name='output'] {
   text-align: right;
 }
 
-div.element[draggable="true"] > section > button {
-  padding: 15%;
-  border: none;
+div.draggable > section button {
+  cursor: crosshair;
 }
 
-div#placeholder {
-  border-radius: 5px;
-  padding: 10px;
-  background-color: rgba(0.5,0.5,0.5,0.2);
-  display: none;
+div.draggable > section > button {
+  padding: 15%;
+  border: none;
 }
