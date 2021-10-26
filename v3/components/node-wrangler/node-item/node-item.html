@@ -1,5 +1,9 @@
-<script src="../../initializer.js"></script>
-<script src="node-item.js"></script>
+<script type="module">
+    import COMPONENT_FACTORY from '../../initializer.js';
+    import NodeItem from './node-item.js';
+
+    COMPONENT_FACTORY.register(NodeItem);
+</script>
 <link rel="stylesheet" href="node-item.css">
 
 <template id="node-item">

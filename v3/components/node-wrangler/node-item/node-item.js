@@ -1,7 +1,10 @@
-class NodeItem extends AbstractClass {
+import { AbstractElement } from '../../initializer.js'
 
+export default class NodeItem extends AbstractElement {
     constructor() {
         super();
+
+        this._template = fetch(`${this.location}.html`).catch(e => console.error(e));
     }
 
     connectedCallback() {
@@ -11,8 +14,8 @@ class NodeItem extends AbstractClass {
             shadow.appendChild(template.content.cloneNode(true));
         })
     }
-}
 
-if (!ComponentFactory.INSTANCE.postpone) {
-    ComponentFactory.INSTANCE.register(NodeItem);
+    get location() {
+        return import.meta.url.replace('.js', '');
+    }
 }
