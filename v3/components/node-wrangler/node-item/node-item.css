@@ -1,0 +1,41 @@
+article {
+    width: var(--element-width, 15vw);
+    height: var(--element-height, 30vh);
+
+    opacity: 1;
+    border: 1px solid;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px;
+    cursor: move;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: calc(var(--element-title, 16px) + 3px) auto;
+    gap: var(--element-gap, 6px);
+}
+
+article > h1 {
+    text-align: center;
+    font-size: var(--element-title, 16px);
+    grid-column: span 2;
+}
+
+article > fieldset[name='input'] {
+    text-align: left;
+}
+
+article > fieldset[name='output'] {
+    text-align: right;
+}
+
+::slotted(*[slot="input-list"]),
+::slotted(*[slot="output-list"]) {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* Not working */
+::slotted(*[slot="input-list"]) > label,
+::slotted(*[slot="output-list"]) > label {
+    font-style: italic;
+}
