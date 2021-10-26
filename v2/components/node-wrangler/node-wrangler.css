@@ -1,0 +1,66 @@
+:root {
+    --element-height: 30vh;
+    --element-width: 15vw;
+    --element-gap: 6px;
+}
+
+div#board {
+    display: grid;
+    gap: var(--element-gap);
+    grid-auto-rows: var(--element-height);
+    grid-auto-columns: var(--element-width);
+}
+
+div.draggable {
+    width: var(--element-width);
+    height: var(--element-height);
+
+    opacity: 1;
+    border: 1px solid;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px;
+    cursor: move;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+
+div.draggable.dragging {
+    opacity: 0.3;
+    background-color: rgba(0.5,0.5,0.5,0.2);
+}
+
+div.draggable,
+div.draggable > label {
+    cursor: move;
+}
+
+div.draggable > label {
+    padding: 10px;
+    grid-column: span 2;
+}
+
+div.draggable > section[name='input'] {
+    text-align: left;
+}
+
+div.draggable > section[name='output'] {
+    text-align: right;
+}
+
+div.draggable > section button {
+    cursor: crosshair;
+}
+
+div.draggable > section > button {
+    padding: 15%;
+    border: none;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}

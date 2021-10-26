@@ -1,0 +1,21 @@
+<script src="../../initializer.js"></script>
+<script src="node-item.js"></script>
+<link rel="stylesheet" href="node-item.css">
+
+<template id="node-item">
+    <article>
+        <h1><slot name="title"></slot></h1>
+        <fieldset name="input">
+            <legend><slot name="input">Default</slot></legend>
+        </fieldset>
+        <fieldset name="output">
+            <legend><slot name="output">Default</slot></legend>
+        </fieldset>
+    </article>
+</template>
+
+<node-item>
+    <p slot="title">This is a slot</p>
+    <p slot="input">input</p>
+    <p slot="output">output</p>
+</node-item>

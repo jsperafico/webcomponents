@@ -71,6 +71,10 @@ window.addEventListener('load', () => {
         'http://www.w3.org/2000/svg',
         'path'
       );
+      
+      path.setAttribute('stroke', 'black');
+      path.setAttribute('state', 'new');
+      path.setAttribute('fill', 'transparent');
 
       var rect = element.getBoundingClientRect();
       var fromType = e.currentTarget.parentElement.getAttribute('name');
@@ -80,12 +84,11 @@ window.addEventListener('load', () => {
       } else {
         path.setAttribute('d', `M${rect.right} ${middle}`);
       }
-      path.setAttribute('stroke', 'black');
-      path.setAttribute('state', 'new');
+
       path.setAttribute('fromId', e.currentTarget.parentElement.parentElement.id);
       path.setAttribute('fromType', fromType);
       path.setAttribute('fromElement', e.currentTarget.textContent);
-      path.setAttribute('fill', 'transparent');
+
       svg.appendChild(path);
     }, false);
     element.addEventListener('dragover', (e) => e.preventDefault(), false);
