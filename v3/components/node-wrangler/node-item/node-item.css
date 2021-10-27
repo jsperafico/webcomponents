@@ -16,26 +16,86 @@ article {
 
 article > h1 {
     text-align: center;
-    font-size: var(--element-title, 16px);
+    font-size: var(--element-title, 18px);
     grid-column: span 2;
+}
+
+article > fieldset {
+    border-width: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0em;
+    padding-inline-end: 0em;
 }
 
 article > fieldset[name='input'] {
     text-align: left;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 0px 5px 5px 0px;
+    margin-bottom: 2px;
 }
 
 article > fieldset[name='output'] {
     text-align: right;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 5px 0px 0px 5px;
+    margin-bottom: 2px;
+}
+
+article > fieldset > legend {
+    font-size: var(--element-legend, 16px);
+}
+
+article > fieldset[name='input'] > legend {
+    margin-left: 5px;
+}
+
+article > fieldset[name='output'] > legend {
+    margin-right: 5px;
 }
 
 ::slotted(*[slot="input-list"]),
 ::slotted(*[slot="output-list"]) {
     display: grid;
+    gap: var(--element-gap, 6px);
     grid-template-columns: 1fr;
 }
 
-/* Not working */
-::slotted(*[slot="input-list"]) > label,
-::slotted(*[slot="output-list"]) > label {
+node-item > *[slot="input-list"] > label,
+node-item > *[slot="output-list"] > label {
     font-style: italic;
+    font-size: var(--element-content, 14px);
+    background-color: none;
+}
+
+node-item > *[slot="input-list"] > label:hover,
+node-item > *[slot="output-list"] > label:hover {
+    background-color: lightgray;
+}
+
+node-item > *[slot="input-list"] > label::before,
+node-item > *[slot="output-list"] > label::after {
+    background: black;
+    width: var(--element-connection, 5px);
+    height: calc(var(--element-connection, 5px) * 2);
+}
+
+node-item > *[slot="input-list"] > label::before {
+    content: '';
+    display: inline-block;
+    border-bottom-right-radius: calc(var(--element-connection, 5px) * 2);
+    border-top-right-radius: calc(var(--element-connection, 5px) * 2);
+    margin-right: 10px;
+}
+
+node-item > *[slot="output-list"] > label::after {
+    content: '';
+    display: inline-block;
+    border-bottom-left-radius: calc(var(--element-connection, 5px) * 2);
+    border-top-left-radius: calc(var(--element-connection, 5px) * 2);
+    margin-left: 10px;
 }

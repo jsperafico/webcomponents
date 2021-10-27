@@ -15,6 +15,8 @@ export default new ComponentFactory();
 export class AbstractElement extends HTMLElement {
     constructor() {
         super();
+        
+        this._template = fetch(`${this._url}.html`).catch(e => console.error(e));
     }
 
     get template() {
@@ -24,7 +26,7 @@ export class AbstractElement extends HTMLElement {
                let doc = new DOMParser().parseFromString(html, 'text/html') ;
                let template = doc.getElementById(this.localName);
                let css = doc.querySelector('link');
-               css.href = `${this.location}.css`;
+               css.href = `${this._url}.css`;
                css.importance = 'high';
                return [template, css];
             });
