@@ -76,15 +76,17 @@ article > footer > fieldset[name='output'] > legend {
     grid-template-columns: auto 20px;
 }
 
-node-item > *[slot="input-list"] > label,
-node-item > *[slot="output-list"] > label {
+node-item > * > label {
     font-style: italic;
     font-size: var(--element-content, 14px);
     background-color: none;
 }
 
-node-item > *[slot="input-list"] > button,
-node-item > *[slot="output-list"] > button {
+node-item > * > label:hover {
+    text-decoration: underline;
+}
+
+node-item > * > button {
     position: relative;
     width: 20px;
     height: 20px;
