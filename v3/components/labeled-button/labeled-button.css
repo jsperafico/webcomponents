@@ -1,0 +1,8 @@
+label:hover {
+    text-decoration: underline;
+}
+
+labeled-button {
+    display: grid;
+    grid-template-columns: auto auto;
+}

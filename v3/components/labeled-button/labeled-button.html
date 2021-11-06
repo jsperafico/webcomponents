@@ -1,0 +1,17 @@
+<script type="module">
+    import COMPONENT_FACTORY from '../initializer.js';
+    import LabeledButton, { createLabeledButton, LabelButton } from './labeled-button.js';
+
+    COMPONENT_FACTORY.register(LabeledButton);
+
+    let entry = new LabelButton(1, 'left', 'Value', '-');
+    document.body.appendChild(createLabeledButton(entry));
+</script>
+
+<link rel="stylesheet" href="labeled-button.css">
+
+<template id="labeled-button">
+    <label for="btn">Default</label><button id="btn">+</button>
+</template>
+
+<labeled-button data-position="left" data-label="simple" data-button="+"></labeled-button>
