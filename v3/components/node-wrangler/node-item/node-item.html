@@ -1,8 +1,9 @@
 <script type="module">
     import COMPONENT_FACTORY from '../../initializer.js';
     import NodeItem, { createNode, Node } from './node-item.js';
+    import LabeledButton from '../../labeled-button/labeled-button.js';
 
-    COMPONENT_FACTORY.register(NodeItem);
+    COMPONENT_FACTORY.register(NodeItem, LabeledButton);
     
     let entry = new Node(1, 'Greater', ['A', 'B'], ['Result']);
     document.body.appendChild(createNode(entry));
@@ -30,16 +31,12 @@
     <span slot="title">My component title</span>
     <span slot="input">Input</span>
     <span slot="output">Output</span>
-    <!-- Multiple elements can go into the same slot -->
-    <div slot="input-list">
-        <!-- Migrate to it's own webcomponent -->
-        <button id="input_1">+</button><label for="input_1">input 1</label>
-        <button id="input_2">+</button><label for="input_2">input 2</label>
-        <button id="input_3">+</button><label for="input_3">input 3</label>
-    </div>
-    <div slot="output-list">
-        <label for="input_4">output 4</label><button id="input_4">+</button>
-        <label for="input_5">output 5</label><button id="input_5">+</button>
-        <label for="input_6">output 6</label><button id="input_6">+</button>
-    </div>
+
+    <labeled-button slot="input-list" id="input_1" data-position="left" data-button="+" data-label="input 1"></labeled-button>
+    <labeled-button slot="input-list" id="input_2" data-position="left" data-button="+" data-label="input 2"></labeled-button>
+    <labeled-button slot="input-list" id="input_3" data-position="left" data-button="+" data-label="input 3"></labeled-button>
+    
+    <labeled-button slot="output-list" id="input_4" data-position="right" data-button="+" data-label="input 4"></labeled-button>
+    <labeled-button slot="output-list" id="input_5" data-position="right" data-button="+" data-label="input 5"></labeled-button>
+    <labeled-button slot="output-list" id="input_6" data-position="right" data-button="+" data-label="input 6"></labeled-button>
 </node-item>

@@ -15,9 +15,9 @@ export default class NodeItem extends AbstractElement {
 
     connectedCallback() {
         this.template.then(([template, css]) => {
-            let shadow = this.attachShadow({mode: 'open'});
-            shadow.appendChild(css.cloneNode(true));
-            shadow.appendChild(template.content.cloneNode(true));
+            this.attachShadow({mode: 'open'});
+            this.shadowRoot.appendChild(css.cloneNode(true));
+            this.shadowRoot.appendChild(template.content.cloneNode(true));
         })
     }
 
@@ -28,7 +28,7 @@ export default class NodeItem extends AbstractElement {
 
 export function createNode(value) {
     if (!(value instanceof Node)) {
-        throw new Error("In order to create a node, please provide a Node specification.");
+        throw new Error("In order to create a Node, please provide the specification.");
     }
 
     let node = document.createElement('node-item');
