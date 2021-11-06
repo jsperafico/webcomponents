@@ -1,4 +1,8 @@
 class ComponentFactory {
+    constructor() {
+        this._incremental = 0;
+    }
+
     register(...elements) {
         elements.forEach(element => 
             customElements.define(this._toTagName(element), element)
@@ -8,9 +12,15 @@ class ComponentFactory {
     _toTagName(element) {
         return element.name.match(/[A-Z][a-z0-9]+|[0-9][a-z0-9]+/g).join('-').toLocaleLowerCase();
     }
+
+    get incremental() {
+        return this._incremental++;
+    }
 }
 
-export default new ComponentFactory();
+const COMPONENT_FACTORY = new ComponentFactory();
+
+export default COMPONENT_FACTORY; 
 
 export class AbstractElement extends HTMLElement {
     constructor() {

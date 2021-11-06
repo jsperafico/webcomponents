@@ -1,3 +1,4 @@
+import COMPONENT_FACTORY from '../../initializer.js'
 import { AbstractElement } from '../../initializer.js'
 
 //https://github.com/octref/web-components-examples/tree/master/editable-list
@@ -26,61 +27,51 @@ export default class NodeItem extends AbstractElement {
 }
 
 export function createNode(value) {
-    if (!(node instanceof Node)) {
+    if (!(value instanceof Node)) {
         throw new Error("In order to create a node, please provide a Node specification.");
     }
 
     let node = document.createElement('node-item');
     node.id = value.id;
 
-    let title = document.createElement('span');
-    title.slot = "title";
-    title.value = value.title;
-    node.appendChild(title);
+    node.appendChild(slotedDescription('span', 'title', value.title));
+    node.appendChild(slotedDescription('span', 'input', 'Input'));
+    node.appendChild(slotedDescription('span', 'output', 'Output'));
 
-    let input = document.createElement('span');
-    input.slot = "input";
-    input.value = "Input";
-    node.appendChild(input);
-    
-    let output = document.createElement('span');
-    output.slot = "output";
-    output.value = "Output";
-    node.appendChild(output);
-
-    let incremental = 0;
-
-    let input_div = document.createElement('div');
-    input_div.slot="input-list";
-    value.inputs.forEach(element => {
-        let button = document.createElement('button');
-        button.id = `${value.id}_i_${incremental}`;
-        button.value = '+';
-
-        let label = document.createElement('label');
-        label.for = `${value.id}_i_${incremental++}`;
-        label.value = element;
-
-        input_div.append(button, label);
-    });
-    node.appendChild(input_div);
-
-    let output_div = document.createElement('div');
-    output_div.slot="output-list";
-    value.outputs.forEach(element => {
-        let button = document.createElement('button');
-        button.id = `${value.id}_i_${incremental}`;
-        button.value = '+';
-
-        let label = document.createElement('label');
-        label.for = `${value.id}_i_${incremental++}`;
-        label.value = element;
-
-        output_div.append(label, button);
-    });
-    node.appendChild(output_div);
+    node.appendChild(listConnectables(node.id, true, value.inputs));
+    node.appendChild(listConnectables(node.id, false, value.outputs));
 
     return node;
+}
+
+export function slotedDescription(tag, slot, value) {
+    let element = document.createElement(tag);
+    element.slot = slot;
+    element.innerHTML = value;
+    return element;
+}
+
+export function listConnectables(parent_idx, isInput, items) {
+    let div = document.createElement('div');
+    div.slot = isInput ? 'input-list' : 'output-list';
+    items.forEach(element => {
+        let idx = COMPONENT_FACTORY.incremental;
+
+        let button = document.createElement('button');
+        button.id = `${parent_idx}_${idx}`;
+        button.innerText = '+';
+
+        let label = document.createElement('label');
+        label.setAttribute('for', `${parent_idx}_${idx}`);
+        label.innerHTML = element;
+
+        if (isInput) {
+            div.append(button, label);
+        } else {
+            div.append(label, button);
+        }
+    });
+    return div;
 }
 
 export class Node {
