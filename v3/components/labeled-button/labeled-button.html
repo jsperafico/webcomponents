@@ -4,14 +4,15 @@
 
     COMPONENT_FACTORY.register(LabeledButton);
 
-    let entry = new LabelButton(1, 'left', 'Value', '-');
+    let entry = new LabelButton(1, 'left', 'value', '-');
     document.body.appendChild(createLabeledButton(entry));
 </script>
 
+<link rel="stylesheet" href="../../main.css">
 <link rel="stylesheet" href="labeled-button.css">
 
 <template id="labeled-button">
-    <label for="btn">Default</label><button id="btn">+</button>
+    <label for="btn" part="label">Default</label><button id="btn" part="button">+</button>
 </template>
 
 <labeled-button data-position="left" data-label="simple" data-button="+"></labeled-button>

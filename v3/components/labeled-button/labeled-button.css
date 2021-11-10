@@ -1,5 +1,14 @@
+label {
+    font-style: italic;
+    font-size: var(--font-size-small, 1rem);
+}
+
 label:hover {
     text-decoration: underline;
+}
+
+button {
+    font-size: var(--font-size-small, 1rem);
 }
 
 labeled-button {
