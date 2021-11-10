@@ -1,98 +1,69 @@
-article {
-    width: var(--element-width, 15vw);
-    height: auto;
-
+:host {
     cursor: move;
 
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--element-gap, 6px);
-
-    /* extract to another css */
-    padding: 0.5em;
-    border-radius: 0.5em;
-    border: 1px solid black;
-    box-shadow: 5px 5px 5px rgba(46, 54, 68, 0.3);
+    gap: var(--strict-size-small, 6px);
+    border: var(--strict-size-tiny, 2px) solid black;
 }
 
-article > h1 {
-    font-size: var(--element-title, 18px);
+h1 {
+    font-size: var(--font-size-large, 1.5rem);
     text-align: center;
 }
 
-article > h1::after {
+h1::after {
     background-color: black; 
     content: '';
     display: inline-block;
     width: 80%;
-    height: 2px;
-    margin-top: 10px;
+    height: var(--strict-size-tiny, 2px);
+    margin-top: var(--strict-size-medium, 10px);
 }
 
-article > footer {
+footer {
     display: grid;
     grid-template-columns: auto auto;
 }
 
-article > footer > fieldset {
-    border-width: 0px;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 0em;
-    padding-inline-end: 0em;
+footer > fieldset {
+    border-width: var(--strict-size-zero, 0px);
+    margin-inline-start: var(--strict-size-zero, 0px);
+    margin-inline-end: var(--strict-size-zero, 0px);
+    padding-inline-start: var(--strict-size-zero, 0px);
+    padding-inline-end: var(--strict-size-zero, 0px);
 }
 
-article > footer > fieldset[name='input'] {
+footer > fieldset[name='input'] {
     text-align: left;
 }
 
-article > footer > fieldset[name='output'] {
+footer > fieldset[name='output'] {
     text-align: right;
 }
 
-article > footer > fieldset > legend {
-    font-size: var(--element-legend, 16px);
+footer > fieldset > legend {
+    font-size: var(--font-size-tiny, 0.75rem);
 }
 
-article > footer > fieldset[name='input'] > legend {
-    margin-left: 10px;
+footer > fieldset[name='input'] > legend {
+    margin-left: var(--strict-size-medium, 10px);
 }
 
-article > footer > fieldset[name='output'] > legend {
-    margin-right: 10px;
+footer > fieldset[name='output'] > legend {
+    margin-right: var(--strict-size-medium, 10px);
 }
 
 ::slotted(*[slot="input-list"]),
 ::slotted(*[slot="output-list"]) {
     display: grid;
-    gap: var(--element-gap, 6px);
+    gap: var(--strict-size-small, 6px);
     align-items: center;
 }
 
 ::slotted(*[slot="input-list"]) {
-    grid-template-columns: 20px auto;
+    grid-template-columns: var(--strict-size-large, 20px) auto;
 }
 ::slotted(*[slot="output-list"]) {
-    grid-template-columns: auto 20px;
-}
-
-node-item > * > label {
-    font-style: italic;
-    font-size: var(--element-content, 14px);
-    background-color: none;
-}
-
-node-item > * > label:hover {
-    text-decoration: underline;
-}
-
-node-item > * > button {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    
-    background: black;
-    border-radius: 50%;
-    color: white;
-    padding: 0px;
+    grid-template-columns: auto var(--strict-size-large, 20px);
 }

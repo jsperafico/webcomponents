@@ -1,37 +1,73 @@
 <script type="module">
     import COMPONENT_FACTORY from '../../initializer.js';
     import NodeItem, { createNode, Node } from './node-item.js';
-    import LabeledButton from '../../labeled-button/labeled-button.js';
+    import LabeledButton, { LabelButton } from '../../labeled-button/labeled-button.js';
 
     COMPONENT_FACTORY.register(NodeItem, LabeledButton);
     
-    let entry = new Node(1, 'Greater', ['A', 'B'], ['Result']);
+    let entry = new Node(
+        1, 
+        'Greater', 
+        [
+            new LabelButton(0, 'left', 'A', '+'),
+            new LabelButton(1, 'left', 'B', '+'),
+        ],
+        [
+            new LabelButton(2, 'right', 'Result', '+')
+        ]
+    );
     document.body.appendChild(createNode(entry));
 </script>
 
+<link rel="stylesheet" href="../../../main.css">
 <link rel="stylesheet" href="node-item.css">
 
+<style>
+    node-item {
+        width: var(--element-width, 15vw);
+        height: auto;
+
+        padding: var(--strict-size-small);
+        border-radius: var(--strict-size-small);
+        box-shadow: var(--strict-size-small) 
+                    var(--strict-size-small) 
+                    var(--strict-size-small) 
+                    rgba(46, 54, 68, 0.3);
+    }
+
+    labeled-button::part(button) {
+        position: relative;
+        width: var(--strict-size-large);
+        height: var(--strict-size-large);
+        
+        background: black;
+        border-radius: var(--strict-size-medium);
+        color: white;
+        padding: var(--strict-size-zero);
+    }
+
+    labeled-button::part(button):hover {
+        background: white;
+        color: black;
+    }
+</style>
+
 <template id="node-item">
-    <article>
-        <h1><slot name="title">Default</slot></h1>
-        <footer>
-            <fieldset name="input">
-                <legend><slot name="input">Default</slot></legend>
-                <slot name="input-list"></slot>
-            </fieldset>
-            <fieldset name="output">
-                <legend><slot name="output">Default</slot></legend>
-                <slot name="output-list"></slot>
-            </fieldset>
-        </footer>
-    </article>
+    <h1 part="title">Default</h1>
+    <footer>
+        <fieldset name="input">
+            <legend part="legend">Default</legend>
+            <slot name="input-list"></slot>
+        </fieldset>
+        <fieldset name="output">
+            <legend part="legend">Default</legend>
+            <slot name="output-list"></slot>
+        </fieldset>
+    </footer>
 </template>
 
-<node-item>
-    <span slot="title">My component title</span>
-    <span slot="input">Input</span>
-    <span slot="output">Output</span>
-
+<!-- change slot approach to attributes- -->
+<node-item data-title="Custom Title" data-show-io="true" data-input-legend="Input" data-output-legend="Output">
     <labeled-button slot="input-list" id="input_1" data-position="left" data-button="+" data-label="input 1"></labeled-button>
     <labeled-button slot="input-list" id="input_2" data-position="left" data-button="+" data-label="input 2"></labeled-button>
     <labeled-button slot="input-list" id="input_3" data-position="left" data-button="+" data-label="input 3"></labeled-button>
