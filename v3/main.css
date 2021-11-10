@@ -1,0 +1,19 @@
+:root {
+    /* Font size */
+    --font-size-huge: 2rem;
+    --font-size-large: 1.5rem;
+    --font-size-medium: 1.25rem;
+    --font-size-small: 1rem;
+    --font-size-tiny: 0.75rem;
+
+    /* Grid */
+    --grid-gap: 6px;
+
+    /* Size */
+    --strict-size-huge: 30px;
+    --strict-size-large: 20px;
+    --strict-size-medium: 10px;
+    --strict-size-small: 6px;
+    --strict-size-tiny: 2px;
+    --strict-size-zero: 0px;
+}
