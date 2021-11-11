@@ -1,4 +1,4 @@
-import { AbstractElement } from '../initializer.js'
+import { AbstractElement } from '../initializer.js';
 
 export default class LabeledButton extends AbstractElement {
 

@@ -54,19 +54,16 @@
 
 <template id="node-item">
     <h1 part="title">Default</h1>
-    <footer>
-        <fieldset name="input">
-            <legend part="legend">Default</legend>
-            <slot name="input-list"></slot>
-        </fieldset>
-        <fieldset name="output">
-            <legend part="legend">Default</legend>
-            <slot name="output-list"></slot>
-        </fieldset>
-    </footer>
+    <fieldset name="input">
+        <legend part="legend">Default</legend>
+        <slot name="input-list"></slot>
+    </fieldset>
+    <fieldset name="output">
+        <legend part="legend">Default</legend>
+        <slot name="output-list"></slot>
+    </fieldset>
 </template>
 
-<!-- change slot approach to attributes- -->
 <node-item data-title="Custom Title" data-show-io="true" data-input-legend="Input" data-output-legend="Output">
     <labeled-button slot="input-list" id="input_1" data-position="left" data-button="+" data-label="input 1"></labeled-button>
     <labeled-button slot="input-list" id="input_2" data-position="left" data-button="+" data-label="input 2"></labeled-button>

@@ -2,7 +2,7 @@
     cursor: move;
 
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: auto auto;
     gap: var(--strict-size-small, 6px);
     border: var(--strict-size-tiny, 2px) solid black;
 }
@@ -10,6 +10,7 @@
 h1 {
     font-size: var(--font-size-large, 1.5rem);
     text-align: center;
+    grid-column: 1 / span 2;
 }
 
 h1::after {
@@ -19,14 +20,10 @@ h1::after {
     width: 80%;
     height: var(--strict-size-tiny, 2px);
     margin-top: var(--strict-size-medium, 10px);
+    grid-column: 1 / span 2;
 }
 
-footer {
-    display: grid;
-    grid-template-columns: auto auto;
-}
-
-footer > fieldset {
+fieldset {
     border-width: var(--strict-size-zero, 0px);
     margin-inline-start: var(--strict-size-zero, 0px);
     margin-inline-end: var(--strict-size-zero, 0px);
@@ -34,23 +31,23 @@ footer > fieldset {
     padding-inline-end: var(--strict-size-zero, 0px);
 }
 
-footer > fieldset[name='input'] {
+fieldset[name='input'] {
     text-align: left;
 }
 
-footer > fieldset[name='output'] {
+fieldset[name='output'] {
     text-align: right;
 }
 
-footer > fieldset > legend {
+fieldset > legend {
     font-size: var(--font-size-tiny, 0.75rem);
 }
 
-footer > fieldset[name='input'] > legend {
+fieldset[name='input'] > legend {
     margin-left: var(--strict-size-medium, 10px);
 }
 
-footer > fieldset[name='output'] > legend {
+fieldset[name='output'] > legend {
     margin-right: var(--strict-size-medium, 10px);
 }
 

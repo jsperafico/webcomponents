@@ -1,7 +1,5 @@
-import { AbstractElement } from '../../initializer.js'
-import { createLabeledButton } from '../../labeled-button/labeled-button.js'
-
-//https://github.com/octref/web-components-examples/tree/master/editable-list
+import { AbstractElement } from '../../initializer.js';
+import { createLabeledButton } from '../../labeled-button/labeled-button.js';
 
 export default class NodeItem extends AbstractElement {
 
