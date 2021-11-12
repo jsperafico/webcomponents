@@ -52,11 +52,11 @@ export default class NodeItem extends AbstractElement {
     }
 
     #changeTitle() {
-        let h1 = this.shadowRoot?.querySelector('h1');
-        if (h1 === undefined) {
+        let header = this.shadowRoot?.querySelector('header');
+        if (header === undefined) {
             return;
         }
-        h1.innerHTML = this['data-title'];
+        header.innerHTML = this['data-title'];
     }
 
     #toggleIO() {
