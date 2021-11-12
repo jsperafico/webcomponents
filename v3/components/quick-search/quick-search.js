@@ -41,7 +41,7 @@ export default class QuickSearch extends AbstractElement {
 
     #setup() {
         let search = this.shadowRoot?.querySelector(`#search`);
-        search.addEventListener('change', (e) => {
+        search.addEventListener('input', (e) => {
             this.#filter(e.target.value);
         });
     }
