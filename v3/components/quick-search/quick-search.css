@@ -1,0 +1,16 @@
+:host {
+    display: grid;
+    grid-auto-rows: auto;
+}
+
+div {
+    overflow-y: auto;
+}
+
+input {
+    width: 100%;
+}
+
+.hide {
+    display: none;
+}

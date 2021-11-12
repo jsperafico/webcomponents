@@ -1,0 +1,31 @@
+<script type="module">
+    import COMPONENT_FACTORY from '../initializer.js';
+    import QuickSearch from './quick-search.js';
+
+    COMPONENT_FACTORY.register(QuickSearch);
+</script>
+
+<link rel="stylesheet" href="quick-search.css">
+
+<template id="quick-search">
+    <header>
+        <label for="search" part="label">Default</label>
+        <input id="search" type="search" part="search" placeholder="Default">
+    </header>
+    <div>
+        <slot></slot>
+    </div>
+</template>
+
+<quick-search label="Type something" description="Proide at least 3 chars to filter">
+    <p>Sum</p>
+    <p>Subtract</p>
+    <p>Plus</p>
+    <div><p>Divide</p> <span>right?</span></a></div>
+</quick-search>
+<quick-search description="Proide at least 3 chars to filter">
+    <p>Sum</p>
+    <p>Subtract</p>
+    <p>Plus</p>
+    <p>Divide</p>
+</quick-search>
