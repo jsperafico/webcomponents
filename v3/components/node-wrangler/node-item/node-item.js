@@ -66,11 +66,11 @@ export default class NodeItem extends AbstractElement {
             return;
         }
         if (this['data-show-io'] == 'true') {
-            input.style.display = '';
-            output.style.display = '';
+            input.classList.remove('hide');
+            output.classList.remove('hide');
         } else {
-            input.style.display = 'none';
-            output.style.display = 'none';
+            input.classList.add('hide');
+            output.classList.add('hide');
         }
     }
 
