@@ -28,10 +28,10 @@ export default class QuickSearch extends AbstractElement {
         }
         this[attr] = newValue;
         switch(attr) {
-            case 'label':
+            case 'data-label':
                 this.#label();
                 break;
-            case 'description':
+            case 'data-description':
                 this.#description();
                 break;
             default:
@@ -69,12 +69,12 @@ export default class QuickSearch extends AbstractElement {
         if (label === undefined) {
             return;
         }
-        if (this['label'] == '' || this['label'] == null || this['label'] == undefined) {
+        if (this['data-label'] == '' || this['data-label'] == null || this['data-label'] == undefined) {
             label.classList.add('hide');
         } else {
             label.classList.remove('hide');
         }
-        label.innerHTML = this['label'];
+        label.innerHTML = this['data-label'];
     }
 
     #description() {
@@ -82,10 +82,10 @@ export default class QuickSearch extends AbstractElement {
         if (search === undefined) {
             return;
         }
-        search.setAttribute('placeholder', this['description']);
+        search.setAttribute('placeholder', this['data-description']);
     }
 
     static get observedAttributes() {
-        return ['label', 'description'];
+        return ['data-label', 'data-description'];
     }
 }

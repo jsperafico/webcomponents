@@ -5,7 +5,22 @@
     COMPONENT_FACTORY.register(QuickSearch);
 </script>
 
+<link rel="stylesheet" href="../../main.css">
 <link rel="stylesheet" href="quick-search.css">
+
+<style>
+    quick-search {
+        width: var(--element-width, 15vw);
+        height: auto;
+
+        padding: var(--strict-size-small);
+        border-radius: var(--strict-size-small);
+        box-shadow: var(--strict-size-small) 
+                    var(--strict-size-small) 
+                    var(--strict-size-small) 
+                    rgba(46, 54, 68, 0.3);
+    }
+</style>
 
 <template id="quick-search">
     <header>
@@ -17,13 +32,13 @@
     </div>
 </template>
 
-<quick-search label="Type something" description="Proide at least 3 chars to filter">
+<quick-search data-label="Type something" data-description="Provide at least 3 chars to filter">
     <p>Sum</p>
     <p>Subtract</p>
     <p>Plus</p>
     <div><p>Divide</p> <span>right?</span></a></div>
 </quick-search>
-<quick-search description="Proide at least 3 chars to filter">
+<quick-search data-description="Provide at least 3 chars to filter">
     <p>Sum</p>
     <p>Subtract</p>
     <p>Plus</p>
