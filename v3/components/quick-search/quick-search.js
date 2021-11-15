@@ -52,10 +52,11 @@ export default class QuickSearch extends AbstractElement {
             return;
         }
         this.#show(slot);
-        
+
         if (value?.length >= 3) {
             slot.assignedElements().forEach(i => {
                 let children = [...i.children];
+                
                 if (children.length > 0) {
                     children.forEach(j => {
                         if (j.nodeName.toLocaleLowerCase() == 'legend') {
