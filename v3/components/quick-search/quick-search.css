@@ -3,16 +3,6 @@
     grid-auto-rows: auto;
 }
 
-header::after {
-    background-color: black; 
-    content: '';
-    display: inline-block;
-    width: 80%;
-    height: var(--strict-size-tiny, 2px);
-    margin-top: var(--strict-size-medium, 10px);
-    margin-left: 10%;
-}
-
 div {
     overflow-y: auto;
 }

@@ -51,17 +51,41 @@ export default class QuickSearch extends AbstractElement {
         if (slot === undefined) {
             return;
         }
+        this.#show(slot);
+        
         if (value?.length >= 3) {
             slot.assignedElements().forEach(i => {
-                if (!i.innerText.toLowerCase().includes(value.toLowerCase().trim())) {
-                    i.classList.add('hide');
-                    return;
+                let children = [...i.children];
+                if (children.length > 0) {
+                    children.forEach(j => {
+                        if (j.nodeName.toLocaleLowerCase() == 'legend') {
+                            return;
+                        }
+                        this.#hide(j, j.innerText, value);
+                    });
+                } else {
+                    this.#hide(i, i.innerText, value);
                 }
-                i.classList.remove('hide');
             });
-        } else {
-            slot.assignedElements().forEach(i => i.classList.remove('hide'));
         }
+    }
+
+    #hide(element, text, value) {
+        if (!text.toLowerCase().includes(value.toLowerCase().trim())) {
+            element.classList.add('hide')
+        }
+    }
+
+    #show(slot) {
+        slot.assignedElements().forEach(i => {
+            i.classList.remove('hide');
+            
+            let children = [...i.children];
+
+            if (children?.length > 0) {
+                children.forEach(j => j.classList.remove('hide'));
+            }
+        });
     }
 
     #label() {

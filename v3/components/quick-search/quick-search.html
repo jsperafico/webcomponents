@@ -18,12 +18,31 @@
         box-shadow: var(--strict-size-small) 
                     var(--strict-size-small) 
                     var(--strict-size-small) 
-                    rgba(46, 54, 68, 0.3);
+                    rgba(163, 174, 192, 0.3);
+    }
+
+    quick-search#plain::part(header)::after {
+        background-color: black; 
+        content: '';
+        display: inline-block;
+        width: 80%;
+        height: var(--strict-size-tiny, 2px);
+        margin-top: var(--strict-size-medium, 10px);
+        margin-left: 10%;
+    }
+
+    quick-search > fieldset {
+        border-width: var(--strict-size-tiny)
+                      var(--strict-size-zero)
+                      var(--strict-size-zero)
+                      var(--strict-size-zero);
+        display: grid;
+        grid-auto-flow: row;
     }
 </style>
 
 <template id="quick-search">
-    <header>
+    <header part="header">
         <label for="search" part="label">Quick search:</label>
         <input id="search" type="search" part="search" placeholder="Default">
     </header>
@@ -33,12 +52,131 @@
 </template>
 
 <quick-search data-label="Type something" data-description="Provide at least 3 chars to filter">
-    <p>Sum</p>
-    <p>Subtract</p>
-    <p>Plus</p>
-    <div><p>Divide</p> <span>right?</span></a></div>
+    <fieldset>
+        <legend>Input</legend>
+        <button>Bokeh Image</button>
+        <button>Image</button>
+        <button>Mask</button>
+        <button>Movie Clip</button>
+        <button>Render Layers</button>
+        <button>RGB</button>
+        <button>Texture</button>
+        <button>Time</button>
+        <button>Track Position</button>
+        <button>Value</button>
+    </fieldset>
+    <fieldset>
+        <legend>Output</legend>
+        <button>Composite</button>
+        <button>File Output</button>
+        <button>Levels</button>
+        <button>Split Viewer</button>
+        <button>Viewer</button>
+    </fieldset>
+    <fieldset>
+        <legend>Color</legend>
+        <button>Alpha Over</button>
+        <button>Bright/Constract</button>
+        <button>Color Balance</button>
+        <button>Color Correction</button>
+        <button>Exposure</button>
+        <button>Gamma</button>
+        <button>Hue Correct</button>
+        <button>Hue Saturation Value</button>
+        <button>Invert</button>
+        <button>Mix</button>
+        <button>RGB Curves</button>
+        <button>Tonemap</button>
+        <button>Combine</button>
+    </fieldset>
+    <fieldset>
+        <legend>Converter</legend>
+        <button>Alpha Converter</button>
+        <button>ColorRamp</button>
+        <button>Combine HSVA</button>
+        <button>Combine RGBA</button>
+        <button>Combine YCbCrA</button>
+        <button>Combine YUYA</button>
+        <button>ID Mask</button>
+        <button>Math</button>
+        <button>RGB to BW</button>
+        <button>Separate HSVA</button>
+        <button>Separate RBGA</button>
+        <button>Separate YCbCrA</button>
+        <button>Separate YUYA</button>
+        <button>Set Alpha</button>
+        <button>View Switch</button>
+    </fieldset>
+    <fieldset>
+        <legend>Filter</legend>
+        <button>Anti-Aliasing</button>
+        <button>Bilateral Blur</button>
+        <button>Blur</button>
+        <button>Bokeh Blur</button>
+        <button>Defocus</button>
+        <button>Denoise</button>
+        <button>Despeckle</button>
+        <button>Dilate/Erode</button>
+        <button>Directional Blur</button>
+        <button>Filter</button>
+        <button>Glare</button>
+        <button>Inpaint</button>
+        <button>Pixelate</button>
+        <button>Sun Beams</button>
+        <button>Vector Blur</button>
+    </fieldset>
+    <fieldset>
+        <legend>Vector</legend>
+        <button>Map Range</button>
+        <button>Map Value</button>
+        <button>Normal</button>
+        <button>Normalize</button>
+        <button>Vector Curves</button>
+    </fieldset>
+    <fieldset>
+        <legend>Matte</legend>
+        <button>Box Mask</button>
+        <button>Channel Key</button>
+        <button>Chroma Key</button>
+        <button>Color Key</button>
+        <button>Color Spill</button>
+        <button>Cryptomatte</button>
+        <button>Difference Key</button>
+        <button>Distance Key</button>
+        <button>Double Edge Mask</button>
+        <button>Ellipse Mask</button>
+        <button>Keying</button>
+        <button>Keying Screen</button>
+        <button>Luminance Key</button>
+    </fieldset>
+    <fieldset>
+        <legend>Distort</legend>
+        <button>Corner Pin</button>
+        <button>Crop</button>
+        <button>Displace</button>
+        <button>Flip</button>
+        <button>Lens Distortion</button>
+        <button>Map UV</button>
+        <button>Movie Distorition</button>
+        <button>Plane Track Deform</button>
+        <button>Rotate</button>
+        <button>Scale</button>
+        <button>Stabilize 2D</button>
+        <button>Transform</button>
+        <button>Translate</button>
+    </fieldset>
+    <fieldset>
+        <legend>Group</legend>
+        <button>Group</button>
+    </fieldset>
+    <fieldset>
+        <legend>Layout</legend>
+        <button>Frame</button>
+        <button>Reroute</button>
+        <button>Switch</button>
+    </fieldset>
 </quick-search>
-<quick-search data-description="Provide at least 3 chars to filter">
+<quick-search id="plain" data-description="Provide at least 3 chars to filter">
     <p>Sum</p>
     <p>Subtract</p>
     <p>Plus</p>
