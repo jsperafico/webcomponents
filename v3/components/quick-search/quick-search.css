@@ -1,10 +1,13 @@
 :host {
     display: grid;
-    grid-auto-rows: auto;
+    grid-auto-flow: row;
 }
 
 div {
+    margin-top: var(--strict-size-medium, 10px);
     overflow-y: auto;
+    max-height: 40vh;
+    display: inherit;
 }
 
 input {

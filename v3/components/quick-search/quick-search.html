@@ -20,17 +20,6 @@
                     var(--strict-size-small) 
                     rgba(163, 174, 192, 0.3);
     }
-
-    quick-search#plain::part(header)::after {
-        background-color: black; 
-        content: '';
-        display: inline-block;
-        width: 80%;
-        height: var(--strict-size-tiny, 2px);
-        margin-top: var(--strict-size-medium, 10px);
-        margin-left: 10%;
-    }
-
     quick-search > fieldset {
         border-width: var(--strict-size-tiny)
                       var(--strict-size-zero)
@@ -39,6 +28,10 @@
         display: grid;
         grid-auto-flow: row;
     }
+
+    quick-search#long::part(content) {
+        max-height: 80vh;
+    }
 </style>
 
 <template id="quick-search">
@@ -46,12 +39,12 @@
         <label for="search" part="label">Quick search:</label>
         <input id="search" type="search" part="search" placeholder="Default">
     </header>
-    <div>
+    <div part="content">
         <slot></slot>
     </div>
 </template>
 
-<quick-search data-label="Type something" data-description="Provide at least 3 chars to filter">
+<quick-search id="long" data-label="Type something" data-description="Provide at least 3 chars to filter">
     <fieldset>
         <legend>Input</legend>
         <button>Bokeh Image</button>
@@ -176,9 +169,57 @@
         <button>Switch</button>
     </fieldset>
 </quick-search>
+<style>
+    quick-search#plain {
+        display: grid;
+        grid-auto-flow: row;
+    }
+    quick-search#plain::part(header)::after {
+        background-color: black; 
+        content: '';
+        display: inline-block;
+        width: 80%;
+        height: var(--strict-size-tiny, 2px);
+        margin-top: var(--strict-size-medium, 10px);
+        margin-left: 10%;
+    }
+</style>
 <quick-search id="plain" data-description="Provide at least 3 chars to filter">
-    <p>Sum</p>
-    <p>Subtract</p>
-    <p>Plus</p>
-    <p>Divide</p>
+    <button>Sum</button>
+    <button>Subtract</button>
+    <button>Plus</button>
+    <button>Divide</button>
 </quick-search>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const math = document.getElementById('math');
+        if (typeof math.showModal === "function") {
+            document.addEventListener('keydown', (e) => {
+                if (e.key == ' ') {
+                    math.showModal();
+                }
+                if (e.key == 'esc' && math.open) {
+                    math.close('Nothing Selected');
+                }
+            });
+        }
+    });
+</script>
+<style>
+    dialog#math {
+        border: 0px;
+        background-color: transparent;
+        grid-auto-flow: row;
+    }
+    dialog#math[open] {
+        display: grid;
+    }
+</style>
+<dialog id="math" close>
+    <quick-search id="plain" data-description="Provide at least 3 chars to filter">
+        <button>Sum</button>
+        <button>Subtract</button>
+        <button>Plus</button>
+        <button>Divide</button>
+    </quick-search>
+</dialog>
