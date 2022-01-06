@@ -15,55 +15,102 @@ form-item {
     position: relative;
 }
 
+::slotted([slot='item']),
+::slotted([slot='label']) {
+    font-size: var(--font-size-small);
+}
+
+::slotted([slot='item'][type='range']),
+::slotted([slot='item'][type='text']),
+::slotted([slot='item'][type='number']),
+::slotted([slot='item'][type='email']),
+::slotted([slot='item'][type='date']),
+::slotted([slot='item'][type='datetime-local']),
+::slotted([slot='item'][type='file']),
+::slotted([slot='item'][type='password']),
+::slotted([slot='item'][type='tel']),
+::slotted([slot='item'][type='select']),
+::slotted([slot='item'][type='checkbox']),
+::slotted([slot='item'][type='radio'])  {
+    border: none;
+    appearance: none;
+    background-color: var(--tertiary-color);
+    border-radius: var(--strict-size-tiny);
+    padding: var(--strict-size-small);
+}
+
 ::slotted([slot='item'][type='range']) {
     cursor: pointer;
+}
+
+::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--strict-size-large);
+    height: var(--strict-size-large);
+    background: var(--secondary-color);
+    border-radius: var(--strict-size-small);
 }
 
 ::slotted([slot='item'][type='range'])::after {
     content: attr(value);
     position: absolute;
-    right: 19px;
+    right: var(--strict-size-large);
     user-select: none;
 }
 
 ::slotted([slot='item'][type='number']) {
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-left: var(--strict-size-tiny);
+    margin-right: var(--strict-size-tiny);
     text-align: right;
 }
 
 ::slotted([slot='item'][type='email']) {
-    margin-left: 2px;
-    margin-right: 2px;
-    padding-right: 19px;
+    margin-left: var(--strict-size-tiny);
+    margin-right: var(--strict-size-tiny);
+    padding-right: var(--strict-size-large);
     text-align: right;
 }
 
 ::slotted([slot='item'][type='radio']),
 ::slotted([slot='item'][type='checkbox']) {
-    width: 99%;
-    height: 100%;
+    height: 140%;
     appearance: none;
-    background-color: rgb(245, 245, 245);
-    border-radius: 5px;
+    background-color: var(--tertiary-color);
+    border-radius: var(--strict-size-tiny);
     cursor: pointer;
-    margin: 0px 0px 0px 2px;
+}
+
+::slotted([slot='item'][type='radio']) {
+    width: 99%;
+    margin: var(--strict-size-zero);
+}
+
+::slotted([slot='item'][type='checkbox']) {
+    width: 99%;
+    margin: var(--strict-size-zero)
+            var(--strict-size-zero)
+            var(--strict-size-zero)
+            var(--strict-size-tiny);
 }
 
 ::slotted([slot='item'][type='radio'])::before,
 ::slotted([slot='item'][type='checkbox'])::before {
     content: '';
     position: absolute;
-    width: 50%;
-    height: 100%;
-    background-color: blue;
-    border-radius: 5px;
+    width: 45%;
+    height: 60%;
+    background-color: var(--secondary-color);
+    border-radius: var(--strict-size-tiny);
     cursor: pointer;
+    margin: var(--strict-size-zero)
+            var(--strict-size-small)
+            var(--strict-size-zero)
+            var(--strict-size-zero);
 }
 
 ::slotted([slot='item'][type='radio']:checked)::before,
 ::slotted([slot='item'][type='checkbox']:checked)::before {
-    right: 0px;
+    right: var(--strict-size-zero);
 }
 
 ::slotted(button[slot="icon"]) {

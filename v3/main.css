@@ -16,4 +16,13 @@
     --strict-size-small: 6px;
     --strict-size-tiny: 2px;
     --strict-size-zero: 0px;
+
+    /* Color */
+    --primary-color: #386641;
+    --secondary-color: #6A994E;
+    --tertiary-color: #A7C957;
+    --quaternary-color: #F2E8CF;
+    --quinary-color: #BC4749;
+    --black-color: rgb(15, 15, 15);
+    --white-color: rgb(238, 231, 231);
 }

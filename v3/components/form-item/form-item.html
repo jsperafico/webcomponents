@@ -57,7 +57,7 @@
     
     <form-item>
         <label slot="label" for="datetime">Datetime:</label>
-        <input slot="item" type="datetime" id="datetime" />
+        <input slot="item" type="datetime-local" id="datetime" />
         <button slot="icon" id="+">+</button>
     </form-item>
     
@@ -139,7 +139,7 @@
     
     <form-item>
         <label slot="label" for="datetime1">Datetime:</label>
-        <input slot="item" type="datetime" id="datetime1" />
+        <input slot="item" type="datetime-local" id="datetime1" />
     </form-item>
     
     <form-item>
@@ -185,7 +185,7 @@
     }
 
     form-item {
-        margin-bottom: 20px;
+        margin-bottom: var(--strict-size-large);
     }
     
     fieldset.outside-label form-item {
@@ -198,5 +198,15 @@
         padding-left: 0;
         z-index: 0;
         text-align: right;
+    }
+
+    fieldset.outside-label form-item [slot='item'][type='radio'],
+    fieldset.outside-label form-item [slot='item'][type='checkbox'] {
+        height: 165%;
+    }
+
+    fieldset.outside-label form-item [slot='item'][type='radio'] {
+        margin: var(--strict-size-zero);
+        width: 100%;
     }
 </style>
