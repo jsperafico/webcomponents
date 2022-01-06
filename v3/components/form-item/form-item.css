@@ -11,29 +11,54 @@ form-item {
     z-index: 1;
 }
 
-::slotted([slot='item'][type='range']) {
+::slotted([slot='item']) {
     position: relative;
 }
 
 ::slotted([slot='item'][type='range'])::after {
     content: attr(value);
     position: absolute;
-    right: calc( 19px );
+    right: 19px;
     user-select: none;
 }
 
 ::slotted([slot='item'][type='number']) {
-    position: relative;
     margin-left: 2px;
     margin-right: 2px;
     text-align: right;
 }
 
 ::slotted([slot='item'][type='email']) {
-    position: relative;
     margin-left: 2px;
     margin-right: 2px;
+    padding-right: 19px;
     text-align: right;
+}
+
+::slotted([slot='item'][type='radio']),
+::slotted([slot='item'][type='checkbox']) {
+    width: 98.5%;
+    height: 100%;
+    appearance: none;
+    background-color: rgb(245, 245, 245);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+::slotted([slot='item'][type='radio'])::before,
+::slotted([slot='item'][type='checkbox'])::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: blue;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+::slotted([slot='item'][type='radio']:checked)::before,
+::slotted([slot='item'][type='checkbox']:checked)::before {
+    right: 0px;
 }
 
 ::slotted(button[slot="icon"]) {
