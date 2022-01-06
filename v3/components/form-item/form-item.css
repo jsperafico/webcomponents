@@ -1,0 +1,42 @@
+form-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+
+::slotted([slot='label']) {
+    user-select: none;
+    position: absolute;
+    padding-left: calc( var(--grid-gap) * 2 );
+    z-index: 1;
+}
+
+::slotted([slot='item'][type='range']) {
+    position: relative;
+}
+
+::slotted([slot='item'][type='range'])::after {
+    content: attr(value);
+    position: absolute;
+    right: calc( 19px );
+    user-select: none;
+}
+
+::slotted([slot='item'][type='number']) {
+    position: relative;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: right;
+}
+
+::slotted([slot='item'][type='email']) {
+    position: relative;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: right;
+}
+
+::slotted(button[slot="icon"]) {
+    cursor: crosshair;
+    border-radius: 100%;
+}

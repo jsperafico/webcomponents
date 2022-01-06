@@ -1,0 +1,202 @@
+<script type="module">
+    import COMPONENT_FACTORY from '../initializer.js';
+    import FormItem from './form-item.js';
+
+    COMPONENT_FACTORY.register(FormItem);
+</script>
+
+<link rel="stylesheet" href="../../main.css">
+<link rel="stylesheet" href="form-item.css">
+
+<!-- https://codepen.io/GauravKumar-Dev/pen/RwPLXbe -->
+
+<template id="form-item">
+    <slot name="label"></slot>
+    <slot name="item"></slot>
+    <slot name="icon"></slot>
+</template>
+
+<fieldset>
+    <legend>Inside label</legend>
+
+    <form-item>
+        <label slot="label" for="x">X:</label>
+        <input slot="item" type="range" id="x" min="0" max="100" step="0.1" value="10" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="w">W:</label>
+        <input slot="item" type="number" id="w" min="0" max="100" value="0" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="email">Email:</label>
+        <input slot="item" type="email" id="email" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="checkbox">Checkbox:</label>
+        <input slot="item" type="checkbox" id="checkbox" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="color">Color:</label>
+        <input slot="item" type="color" id="color" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="date">Date:</label>
+        <input slot="item" type="date" id="date" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="datetime">Datetime:</label>
+        <input slot="item" type="datetime" id="datetime" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="file">File:</label>
+        <input slot="item" type="file" id="file" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="password">Password:</label>
+        <input slot="item" type="password" id="password" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="radio">Radio:</label>
+        <input slot="item" type="radio" id="radio" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="tel">Tel:</label>
+        <input slot="item" type="tel" id="tel" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="text">Text:</label>
+        <input slot="item" type="text" id="text" />
+        <button slot="icon" id="+">+</button>
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="select1">Select:</label>
+        <select slot="item" id="select">
+            <option></option>
+            <option>a</option>
+            <option>b</option>
+            <option>c</option>
+        </select>
+        <button slot="icon" id="+">+</button>
+    </form-item>
+</fieldset>
+
+
+<fieldset class="outside-label">
+    <legend>Outside label</legend>
+
+    <form-item>
+        <label slot="label" for="x1">X:</label>
+        <input slot="item" type="range" id="x1" min="0" max="100" step="0.1" value="10" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="w1">W:</label>
+        <input slot="item" type="number" id="w1" min="0" max="100" value="0" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="email1">Email:</label>
+        <input slot="item" type="email" id="email1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="checkbox1">Checkbox:</label>
+        <input slot="item" type="checkbox" id="checkbox1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="color1">Color:</label>
+        <input slot="item" type="color" id="color1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="dat1">Date:</label>
+        <input slot="item" type="date" id="date1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="datetime1">Datetime:</label>
+        <input slot="item" type="datetime" id="datetime1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="file1">File:</label>
+        <input slot="item" type="file" id="file1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="password1">Password:</label>
+        <input slot="item" type="password" id="password1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="radio1">Radio:</label>
+        <input slot="item" type="radio" id="radio1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="tel1">Tel:</label>
+        <input slot="item" type="tel" id="tel1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="text1">Text:</label>
+        <input slot="item" type="text" id="text1" />
+    </form-item>
+    
+    <form-item>
+        <label slot="label" for="select1">Select:</label>
+        <select slot="item" id="select">
+            <option></option>
+            <option>a</option>
+            <option>b</option>
+            <option>c</option>
+        </select>
+    </form-item>
+</fieldset>
+
+<style>
+    body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    form-item {
+        margin-bottom: 20px;
+    }
+    
+    fieldset.outside-label form-item {
+        grid-template-columns: 90px auto;
+    }
+
+    fieldset.outside-label form-item [slot="label"] {
+        position: relative;
+        margin-right: calc( var(--grid-gap) * 2 );
+        padding-left: 0;
+        z-index: 0;
+        text-align: right;
+    }
+</style>
