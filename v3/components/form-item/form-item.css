@@ -7,7 +7,7 @@ form-item {
 ::slotted([slot='label']) {
     user-select: none;
     position: absolute;
-    padding-left: calc( var(--grid-gap) * 2 );
+    /* padding-left: calc( var(--grid-gap) * 2 ); */
     z-index: 1;
 }
 
@@ -36,7 +36,7 @@ form-item {
     appearance: none;
     background-color: var(--tertiary-color);
     border-radius: var(--strict-size-tiny);
-    padding: var(--strict-size-small);
+    /* padding: var(--strict-size-small); */
 }
 
 ::slotted([slot='item'][type='range']) {
@@ -59,21 +59,26 @@ form-item {
 }
 
 ::slotted([slot='item'][type='number']) {
-    margin-left: var(--strict-size-tiny);
-    margin-right: var(--strict-size-tiny);
+    /* margin-left: var(--strict-size-tiny);
+    margin-right: var(--strict-size-tiny); */
     text-align: right;
 }
 
-::slotted([slot='item'][type='email']) {
-    margin-left: var(--strict-size-tiny);
+::slotted([slot='item'][type='date']),
+::slotted([slot='item'][type='datetime-local']),
+::slotted([slot='item'][type='email']),
+::slotted([slot='item'][type='password']),
+::slotted([slot='item'][type='tel']),
+::slotted([slot='item'][type='text']) {
+    /* margin-left: var(--strict-size-tiny);
     margin-right: var(--strict-size-tiny);
-    padding-right: var(--strict-size-large);
+    padding-right: var(--strict-size-large); */
     text-align: right;
 }
 
 ::slotted([slot='item'][type='radio']),
 ::slotted([slot='item'][type='checkbox']) {
-    height: 140%;
+    height: 100%;
     appearance: none;
     background-color: var(--tertiary-color);
     border-radius: var(--strict-size-tiny);
@@ -82,35 +87,58 @@ form-item {
 
 ::slotted([slot='item'][type='radio']) {
     width: 99%;
-    margin: var(--strict-size-zero);
+    /* margin: var(--strict-size-zero); */
 }
 
 ::slotted([slot='item'][type='checkbox']) {
     width: 99%;
-    margin: var(--strict-size-zero)
+    /* margin: var(--strict-size-zero)
             var(--strict-size-zero)
             var(--strict-size-zero)
-            var(--strict-size-tiny);
+            var(--strict-size-tiny); */
 }
 
 ::slotted([slot='item'][type='radio'])::before,
 ::slotted([slot='item'][type='checkbox'])::before {
     content: '';
     position: absolute;
-    width: 45%;
+    width: 50%;
     height: 60%;
     background-color: var(--secondary-color);
     border-radius: var(--strict-size-tiny);
     cursor: pointer;
-    margin: var(--strict-size-zero)
+    /* margin: var(--strict-size-zero)
             var(--strict-size-small)
             var(--strict-size-zero)
-            var(--strict-size-zero);
+            var(--strict-size-zero); */
 }
 
 ::slotted([slot='item'][type='radio']:checked)::before,
 ::slotted([slot='item'][type='checkbox']:checked)::before {
     right: var(--strict-size-zero);
+}
+
+::slotted([slot='item'][type='color']) {
+    appearance: none;
+    width: 100%;
+    padding: var(--strict-size-zero);
+    border: var(--strict-size-zero) transparent;
+    background-color: transparent;
+}
+
+
+[slot='item'][type='file']::-webkit-file-upload-button {
+    display: none;
+    cursor: pointer;
+}
+
+[slot='item'][type='file']::-webkit-file-upload-button + span {
+    float: right;
+}
+
+[slot='item'][type='color']::-webkit-color-swatch-wrapper {
+    border: var(--strict-size-zero) transparent;
+    cursor: pointer;
 }
 
 ::slotted(button[slot="icon"]) {

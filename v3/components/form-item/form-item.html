@@ -81,7 +81,7 @@
     
     <form-item>
         <label slot="label" for="tel">Tel:</label>
-        <input slot="item" type="tel" id="tel" />
+        <input slot="item" type="tel" id="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"/>
         <button slot="icon" id="+">+</button>
     </form-item>
     
@@ -159,7 +159,7 @@
     
     <form-item>
         <label slot="label" for="tel1">Tel:</label>
-        <input slot="item" type="tel" id="tel1" />
+        <input slot="item" type="tel" id="tel1" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"/>
     </form-item>
     
     <form-item>
@@ -182,6 +182,7 @@
     body {
         display: grid;
         grid-template-columns: 1fr 1fr;
+        background-color: var(--quaternary-color);
     }
 
     form-item {
@@ -194,15 +195,15 @@
 
     fieldset.outside-label form-item [slot="label"] {
         position: relative;
-        margin-right: calc( var(--grid-gap) * 2 );
-        padding-left: 0;
+        /* margin-right: calc( var(--grid-gap) * 2 );
+        padding-left: 0; */
         z-index: 0;
         text-align: right;
     }
 
     fieldset.outside-label form-item [slot='item'][type='radio'],
     fieldset.outside-label form-item [slot='item'][type='checkbox'] {
-        height: 165%;
+        /* height: 165%; */
     }
 
     fieldset.outside-label form-item [slot='item'][type='radio'] {
